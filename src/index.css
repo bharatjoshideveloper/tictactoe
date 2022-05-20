@@ -11,3 +11,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.bgtic {
+  background-color: black;
+}
+
+.buttontic {
+  background-color: yellowgreen !important;
+}
+
+.button:hover {
+  background-color: yellowgreen !important;
+  color: black !important;
+}
