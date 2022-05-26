@@ -1,37 +1,78 @@
 import React, { Component } from 'react'
+import Base from './Base';
 
 export class Main extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            box: '',
+            val: '',
+            message: '',
+            player: '',
+            mode: 'base'
+
+        }
+    }
+
+    handleClick = (i) => {
+        let box = this.state.box;
+        this.setState({ message: '' })
+        box[i] = this.state.val;
+        // alert(box[i]);
+        this.setState({ val: this.state.val === 'O' ? 'X' : 'O' })
+    }
+    restart = () => {
+        this.setState({ box: '', message: '' });
+    }
+    start = () => {
+        this.setState({ box: ['', '', '', '', '', '', '', '', ''], message: 'Lets Start' });
+    }
+    data = (data) => {
+        this.setState({ player: data.name, val: data.val, mode: 'start' })
+
+    }
+
     render() {
         return (
             <React.Fragment>
-                <div className='container-fluid d-flex justify-content-center'>
+                {this.state.mode === 'base' && <Base data={this.data} />}
+                {this.state.mode === 'start' && <div className='container d-flex justify-content-center'>
                     <div className='row mt-5'>
-                        <div className='col-lg-12 shadow-lg p-3 mb-5  rounded'>
+                        <div className='col-lg-12'>
+                            <div class="jumbotron">
+                                <h1>Player: {this.state.player}</h1>
+                                <h3>Selected Token: {this.state.val}</h3>
+                            </div>
                             <div className='row mb-2'>
                                 <button className='col-lg-12 btn btn-primary border border-1 text-center text-dark buttontic fs-3'>Tic-Tac-Toe</button>
                             </div>
-                            <div className='row bg-dark'>
-                                <button className='col-lg-4 p-5 btn border border-1 text-center text-white button fs-1'>X</button>
-                                <button className='col-lg-4 p-5 btn border border-1 text-center text-white button fs-1'>X</button>
-                                <button className='col-lg-4 p-5 btn border border-1 text-center text-white button fs-1'>X</button>
+                            <div className='row mb-2'>
+                                {this.state.message === '' ? "" : <p className='col-lg-12  text-center text-dark buttontic fs-3'>{this.state.message}</p>}
                             </div>
                             <div className='row bg-dark'>
-                                <button className='col-lg-4 p-5 btn border border-1 text-center text-white button fs-1'>O</button>
-                                <button className='col-lg-4 p-5 btn border border-1 text-center text-white button fs-1'>O</button>
-                                <button className='col-lg-4 p-5 btn border border-1 text-center text-white button fs-1'>O</button>
+                                <button className='col-lg-4 p-5 btn border border-1 text-center text-white button fs-1' onClick={() => this.handleClick(0)}>{this.state.box[0]}</button>
+                                <button className='col-lg-4 p-5 btn border border-1 text-center text-white button fs-1' onClick={() => this.handleClick(1)}>{this.state.box[1]}</button>
+                                <button className='col-lg-4 p-5 btn border border-1 text-center text-white button fs-1' onClick={() => this.handleClick(2)}>{this.state.box[2]}</button>
                             </div>
                             <div className='row bg-dark'>
-                                <button className='col-lg-4 p-5 btn border border-1 text-center text-white button fs-1'>X</button>
-                                <button className='col-lg-4 p-5 btn border border-1 text-center text-white button fs-1'>X</button>
-                                <button className='col-lg-4 p-5 btn border border-1 text-center text-white button fs-1'>X</button>
+                                <button className='col-lg-4 p-5 btn border border-1 text-center text-white button fs-1' onClick={() => this.handleClick(3)}>{this.state.box[3]}</button>
+                                <button className='col-lg-4 p-5 btn border border-1 text-center text-white button fs-1' onClick={() => this.handleClick(4)}>{this.state.box[4]}</button>
+                                <button className='col-lg-4 p-5 btn border border-1 text-center text-white button fs-1' onClick={() => this.handleClick(5)}>{this.state.box[5]}</button>
+                            </div>
+                            <div className='row bg-dark'>
+                                <button className='col-lg-4 p-5 btn border border-1 text-center text-white button fs-1' onClick={() => this.handleClick(6)}>{this.state.box[6]}</button>
+                                <button className='col-lg-4 p-5 btn border border-1 text-center text-white button fs-1' onClick={() => this.handleClick(7)}>{this.state.box[7]}</button>
+                                <button className='col-lg-4 p-5 btn border border-1 text-center text-white button fs-1' onClick={() => this.handleClick(8)}>{this.state.box[8]}</button>
                             </div>
                             <div className='row mt-2 mb-2'>
-                                <button className='col-lg-6 btn btn-primary border border-1 text-center text-dark buttontic fs-1'>Start</button>
-                                <button className='col-lg-6 btn btn-primary border border-1 text-center text-dark buttontic fs-1'>Restart</button>
+                                <button className='col-lg-6 btn btn-primary border border-1 text-center text-dark buttontic fs-1' onClick={() => this.start()}>Start</button>
+                                <button className='col-lg-6 btn btn-primary border border-1 text-center text-dark buttontic fs-1' onClick={() => this.restart()}>Restart</button>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>}
+
             </React.Fragment>
         )
     }
