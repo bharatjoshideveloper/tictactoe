@@ -30,7 +30,6 @@ export class Main extends Component {
     }
     data = (data) => {
         this.setState({ player: data.name, val: data.val, mode: 'start' })
-
     }
 
     render() {
@@ -40,9 +39,10 @@ export class Main extends Component {
                 {this.state.mode === 'start' && <div className='container d-flex justify-content-center'>
                     <div className='row mt-5'>
                         <div className='col-lg-12'>
-                            <div class="jumbotron">
+                            <div class="row jumbotron">
                                 <h1>Player: {this.state.player}</h1>
-                                <h3>Selected Token: {this.state.val}</h3>
+                                {this.state.val === 'X' ? <h3 className='col-sm-6 p-2 buttontic text-center'>Turn: {this.state.val}</h3> : <h3 className='col-sm-6 p-2 buttontic text-center'>-</h3>}
+                                {this.state.val === 'O' ? <h3 className='col-sm-6 p-2 buttontic text-center'>Turn: {this.state.val}</h3> : <h3 className='col-sm-6 p-2 buttontic text-center'>-</h3>}
                             </div>
                             <div className='row mb-2'>
                                 <button className='col-lg-12 btn btn-primary border border-1 text-center text-dark buttontic fs-3'>Tic-Tac-Toe</button>
@@ -66,8 +66,8 @@ export class Main extends Component {
                                 <button className='col-lg-4 p-5 btn border border-1 text-center text-white button fs-1' onClick={() => this.handleClick(8)}>{this.state.box[8]}</button>
                             </div>
                             <div className='row mt-2 mb-2'>
-                                <button className='col-lg-6 btn btn-primary border border-1 text-center text-dark buttontic fs-1' onClick={() => this.start()}>Start</button>
-                                <button className='col-lg-6 btn btn-primary border border-1 text-center text-dark buttontic fs-1' onClick={() => this.restart()}>Restart</button>
+                                <button className='col-lg-6 btn btn-primary border border-1 text-center text-dark buttontic fs-3' onClick={() => this.start()}>Start</button>
+                                <button className='col-lg-6 btn btn-primary border border-1 text-center text-dark buttontic fs-3' onClick={() => this.restart()}>Replay</button>
                             </div>
                         </div>
                     </div>

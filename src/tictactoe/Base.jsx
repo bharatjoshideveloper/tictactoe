@@ -1,5 +1,4 @@
-import React, { Component } from 'react'
-import { NavLink } from 'react-router-dom';
+import React, { Component } from 'react';
 
 export class Base extends Component {
     constructor(props) {
@@ -33,23 +32,21 @@ export class Base extends Component {
         return (
             <React.Fragment>
                 <div className='container m-5 d-flex justify-content-center'>
-
                     <div className='row m-5'>
                         <div className='col-lg-12 mb-5 text-center'>
-                            <label className='display-4'>Tic Tac Toe</label>
+                            <label className='display-4'><i class="bi bi-controller"></i>T<span className='h1 text-danger'>i</span>c T<sup className='h1 text-danger'>a</sup>c T<span className='text-danger'>o</span>e</label>
                         </div>
                         <div className='col-sm-6'>
-                            <label className='display-4'>Enter Player Name....</label>
+                            <label className='display-4'>Enter Your Name....</label>
                             <h5 className='text-danger'>{this.state.message}</h5>
-                            {this.state.message === '' ? "" : <button className='mt-5 btn buttontic p-3 text-dark fs-5 form-control' onClick={() => { this.props.data(this.state) }}>Start</button>}
-
+                            {this.state.message === '' ? "" : <button className="mt-5 btn btn-dark text-white fs-5 form-control p-3" style={{ border: 'none', borderRight: '15px solid yellowgreen' }} onClick={() => { this.props.data(this.state) }}>Start</button>}
                         </div>
                         <form className='col-sm-6'>
                             <input type='text' className="form-control fs-1" style={{ border: 'none', borderBottom: '2px solid black', backgroundColor: 'darkgrey' }} name='name' value={this.state.name} onChange={this.handleChangedata} />
-                            <label className='mt-5 mb-4 h5 text-dark'>Select Token:</label><br />
-                            <button type='button' className='btn btn-dark btn-lg border' name='X' onClick={() => { this.token('X') }}  >X</button><button type='button' className='btn btn-dark  btn-lg border' name='O' onClick={() => { this.token('O') }}  >0</button>
+                            <label className='mt-5 mb-4 h5 text-dark'>Select which you want to be ? </label><br />
+                            <button type='button' className='btn btn-dark btn-lg' style={{ border: 'none', borderRight: '15px solid yellowgreen' }} name='X' onClick={() => { this.token('X') }}  >Player X</button><button type='button' className='btn btn-dark  btn-lg mx-4' style={{ border: 'none', borderRight: '15px solid yellowgreen' }} name='O' onClick={() => { this.token('O') }}  >Player 0</button>
                             <br />
-                            <button type="button" class="mt-5 btn buttontic text-dark fs-5 form-control p-3" onClick={this.handleSubmit}>Save</button>
+                            <button type="button" className="mt-5 btn btn-dark text-white fs-5 form-control p-3" style={{ border: 'none', borderRight: '15px solid yellowgreen' }} onClick={this.handleSubmit}>Save</button>
                         </form>
                     </div>
                 </div>
@@ -57,5 +54,4 @@ export class Base extends Component {
         )
     }
 }
-
-export default Base
+export default Base;
