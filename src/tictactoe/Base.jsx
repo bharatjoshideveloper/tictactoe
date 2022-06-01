@@ -7,6 +7,7 @@ export class Base extends Component {
         this.state = {
             name: '',
             val: '',
+            number: '',
             message: ''
         }
     }
@@ -24,7 +25,7 @@ export class Base extends Component {
             this.setState({ message: 'Please Enter Valid Response!' })
         }
         else {
-            this.setState({ name: this.state.name, message: 'welcome ' + this.state.name, val: this.state.val });
+            this.setState({ name: this.state.name, message: 'welcome ' + this.state.name, val: this.state.val, number: this.state.number });
 
         }
     }
@@ -37,11 +38,13 @@ export class Base extends Component {
                             <label className='display-4'><i class="bi bi-controller"></i>T<span className='h1 text-danger'>i</span>c T<sup className='h1 text-danger'>a</sup>c T<span className='text-danger'>o</span>e</label>
                         </div>
                         <div className='col-sm-6'>
+                            <label className='display-4'>Enter [row][col]</label><hr />
                             <label className='display-4'>Enter Your Name....</label>
                             <h5 className='text-danger'>{this.state.message}</h5>
                             {this.state.message === '' ? "" : <button className="mt-5 btn btn-dark text-white fs-5 form-control p-3" style={{ border: 'none', borderRight: '15px solid yellowgreen' }} onClick={() => { this.props.data(this.state) }}>Start</button>}
                         </div>
                         <form className='col-sm-6'>
+                            <input type='text' className="form-control fs-1" style={{ border: 'none', borderBottom: '2px solid black', backgroundColor: 'darkgrey' }} name='number' value={this.state.number} onChange={this.handleChangedata} />
                             <input type='text' className="form-control fs-1" style={{ border: 'none', borderBottom: '2px solid black', backgroundColor: 'darkgrey' }} name='name' value={this.state.name} onChange={this.handleChangedata} />
                             <label className='mt-5 mb-4 h5 text-dark'>Select which you want to be ? </label><br />
                             <button type='button' className='btn btn-dark btn-lg' style={{ border: 'none', borderRight: '15px solid yellowgreen' }} name='X' onClick={() => { this.token('X') }}  >Player X</button><button type='button' className='btn btn-dark  btn-lg mx-4' style={{ border: 'none', borderRight: '15px solid yellowgreen' }} name='O' onClick={() => { this.token('O') }}  >Player 0</button>
