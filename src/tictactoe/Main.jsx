@@ -17,10 +17,10 @@ export class Main extends Component {
     }
 
 
-    handleClick = (i) => {
+    handleClick = (key) => {
         let box = this.state.box;
         this.setState({ message: '' })
-        box[i] = this.state.val;
+        box[key] = this.state.val;
         // alert(box[i]);
         this.setState({ val: this.state.val === 'O' ? 'X' : 'O' })
 
@@ -35,17 +35,16 @@ export class Main extends Component {
         this.setState({ player: data.name, val: data.val, mode: 'start', number: data.number })
     }
 
-    createBoardDivs() {
+    createbox() {
         debugger
-        let noofcol = this.state.number;
-        let noofrow = this.state.number;
+        let n = this.state.number;
         this.boardItems = [];
-        for (let i = 0; i < 3; i++) {
-            for (let j = 0; j < 3; j++) {
+        for (let i = 0; i < n; i++) {
+            for (let j = 0; j < n; j++) {
                 let key = i.toString() + j.toString();
-                this.boardItems.push(<div>{key}</div>);
-                // <div xaxis={i} yaxis={j} key={i.toString() + j.toString()}>{key}</div>
+                this.boardItems.push(<button className='btn btn-dark border border-1 border-light  desbut' onClick={() => this.handleClick(key)}>{this.state.box[key]}</button>);
             }
+            this.boardItems.push(<br />);
         }
         return this.boardItems;
     }
@@ -67,11 +66,9 @@ export class Main extends Component {
                             <div className='row mb-2'>
                                 {this.state.message === '' ? "" : <p className='col-lg-12  text-center text-dark buttontic fs-3'>{this.state.message}</p>}
                             </div>
-                            <div className='row'>
-                                <div className='col-sm-1'>
-                                    {this.createBoardDivs()}
-                                </div>
-                            </div>
+
+                            {this.createbox()}
+
                             {/* <div className='row bg-dark'>
                                 <button className='col-lg-4 p-5 btn border border-1 text-center text-white button fs-1' onClick={() => this.handleClick(0)}>{this.state.box[0]}</button>
                                 <button className='col-lg-4 p-5 btn border border-1 text-center text-white button fs-1' onClick={() => this.handleClick(1)}>{this.state.box[1]}</button>
@@ -86,11 +83,11 @@ export class Main extends Component {
                                 <button className='col-lg-4 p-5 btn border border-1 text-center text-white button fs-1' onClick={() => this.handleClick(6)}>{this.state.box[6]}</button>
                                 <button className='col-lg-4 p-5 btn border border-1 text-center text-white button fs-1' onClick={() => this.handleClick(7)}>{this.state.box[7]}</button>
                                 <button className='col-lg-4 p-5 btn border border-1 text-center text-white button fs-1' onClick={() => this.handleClick(8)}>{this.state.box[8]}</button>
-                            </div>
+                            </div> */}
                             <div className='row mt-2 mb-2'>
                                 <button className='col-lg-6 btn btn-primary border border-1 text-center text-dark buttontic fs-3' onClick={() => this.start()}>Start</button>
                                 <button className='col-lg-6 btn btn-primary border border-1 text-center text-dark buttontic fs-3' onClick={() => this.restart()}>Replay</button>
-                            </div> */}
+                            </div>
 
                         </div>
                     </div>

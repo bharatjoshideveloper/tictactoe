@@ -18,7 +18,11 @@ code {
 }
 
 .desbut {
-  color: yellowgreen;
+  color: yellowgreen !important;
+  height: 100px;
+  width: 100px;
+  font-size: large;
+  text-align: center !important;
 }
 
 .buttontic {
